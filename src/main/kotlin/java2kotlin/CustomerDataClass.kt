@@ -3,7 +3,7 @@ package java2kotlin
 data class CustomerDataClass(val id: Int, val name: String)
 
 
-fun main(args: Array<String>) {
+fun main() {
 
     val firstDataClass = CustomerDataClass(12, "Kotlin Data Class")
     val secondDataClass = CustomerDataClass(12, "Kotlin Data Class")

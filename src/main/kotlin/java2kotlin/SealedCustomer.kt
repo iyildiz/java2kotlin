@@ -4,7 +4,7 @@ sealed class SealedCustomer
 class PersonalCustomer (val name: String)
 class CorporateCustomer (val corporateName: String)
 
-fun main(args: Array<String>) {
+fun main() {
 
     val customerList = listOf(
             PersonalCustomer("Personal Name"),

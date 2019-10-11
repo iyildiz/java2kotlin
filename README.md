@@ -4,6 +4,7 @@
 - Java `CustomerJava.java` ==> setters and getters :(
 - Kotlin `Customer.kt` ==> no setters & getters :)
 - Kotlin : You can have val (immutable) & var (mutable) 
+- Kotlin `with` can be used to access class members see `Customer.kt`
 
 ### Data Classes
 - CustomerDataClass.kt ==> comes with equals/hashcode/toString
@@ -20,4 +21,5 @@
 
 ###
 - String interpolation: "sum of $a and ${b.length} is ${a + b.length}" see  Functions.kt/stringInterpolation
-- Builder functions : 
+- Collections: builder functions can be used for list/map and other collections. See Functions.kt/collections
+- Expressions are used a lot even if, when can be expressions. See  Functions.kt/expressions
