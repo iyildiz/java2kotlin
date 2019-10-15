@@ -23,7 +23,7 @@
 - **Default Parameter Values:** Kotlin has default values for parameters e.g [functions.kt/methodWithDefaultParameters](src/main/kotlin/functions.kt)
 - **Extension functions:** Kotlin allows extensions functions on types e.g [functions.kt/extensionFunction](src/main/kotlin/functions.kt)
 - **Local function:** You can scope functions inside functions e.g [functions.kt/extensionFunction/prefix](src/main/kotlin/functions.kt)
-- **inline functions:** inline functions don't create a new stack in memory e.g [functions.kt/methodWithDefaultParameters](src/main/kotlin/functions.kt)
+- **inline functions:** inline functions don't create a new stack in memory e.g [functions.kt/inlineFunction](src/main/kotlin/functions.kt)
 
 ### Functional programming / lambdas
 - Lambdas are a part of the language and quite cheap to use. See [Lambdas](src/main/kotlin/functional.kt)
