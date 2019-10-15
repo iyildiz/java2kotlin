@@ -22,11 +22,24 @@
 ### Functions
 - **Default Parameter Values:** Kotlin has default values for parameters e.g [functions.kt/methodWithDefaultParameters](src/main/kotlin/functions.kt)
 - **Extension functions:** Kotlin allows extensions functions on types e.g [functions.kt/extensionFunction](src/main/kotlin/functions.kt)
-- **Local function:** YOu can inline functions inside functions e.g [functions.kt/extensionFunction/prefix](src/main/kotlin/functions.kt)
+- **Local function:** You can scope functions inside functions e.g [functions.kt/extensionFunction/prefix](src/main/kotlin/functions.kt)
+- **inline functions:** inline functions don't create a new stack in memory e.g [functions.kt/methodWithDefaultParameters](src/main/kotlin/functions.kt)
 
+### Functional programming / lambdas
+- Lambdas are a part of the language and quite cheap to use. See [Lambdas](src/main/kotlin/functional.kt)
+- 
 ### Idioms
 - **String interpolation** "sum of $a and ${b.length} is ${a + b.length}" see [idioms.kt/stringInterpolation](src/main/kotlin/idioms.kt)
 - **Collections**: builder functions can be used for list/map and other collections. See [idioms.kt/collections](src/main/kotlin/idioms.kt)
 - **Expressions** are used a lot even if, when can be expressions. See [idioms.kt/expressions](src/main/kotlin/idioms.kt)
-- **Nullability** examples added under [NullableCustomer](src/main/kotlin/NullableCustomer.kt)
+- **Nullability** Once you have `nullable types` using `!` compiler forces you to dereference it under control. See [NullableCustomer](src/main/kotlin/NullableCustomer.kt)
+    - **Safe Calls (?.)** : `nullableCustomer?.name` dereferences safely only when customer is not null
+    - **Non Safe Calls (!!.)** : `nullableCustomer!!.name` dereference forcefully, make assertion that customer is not null but you may end up with a null pointer exception if your assertion is not true
+    - **Elvis Operator (?:)** : `val result = nullableCustomer?.someMethodCall() ?: fallbackIfNullMethodCall()` this can return a custom value if the calling property is null
+    - **let** : Executes if not null `nullableCustomer?.let { validateCustomer(it) }`
 - **lazy variables** : their values is assigned when they are accessed first time. See [idioms.kt/lazyLoading](src/main/kotlin/idioms.kt)
+
+### References
+- https://kotlinlang.org/docs/reference/
+- [How to Kotlin - from the Lead Kotlin Language Designer (Google I/O '18)](https://www.youtube.com/watch?v=6P20npkvcb8)
+- 

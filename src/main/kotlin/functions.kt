@@ -3,6 +3,11 @@ fun main() {
     methodWithDefaultParameters("abc", "z")
     methodWithDefaultParameters("abc", "z", "y")
     println("String ".extensionFunction())
+    println(inlineFunction { x, y -> x + y })
+}
+
+fun inlineFunction(f:(Int, Int) -> Int) : Int {
+    return f(1,2)
 }
 
 fun methodWithDefaultParameters(message: String, prefix: String = "", suffix: String ="") {
