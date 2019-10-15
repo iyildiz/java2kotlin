@@ -3,6 +3,16 @@ fun main() {
     stringInterpolation(2, "abcdef")
     collections()
     expressions()
+    lazyLoading()
+}
+
+fun lazyLoading() {
+    val lazyVal: String by lazy {
+        println("setting lazyVal now :)")
+        "loaded lazily when accessed first time"
+    }
+    println("lazyVal is not set yet :(")
+    println("lazyVal: $lazyVal")
 }
 
 fun stringInterpolation(a: Int, b: String) {
