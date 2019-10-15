@@ -1,13 +1,13 @@
 fun main() {
-    methodWithDefaultParameters("abc")
-    methodWithDefaultParameters("abc", "z")
-    methodWithDefaultParameters("abc", "z", "y")
-    println("String ".extensionFunction())
+
     stringInterpolation(2, "abcdef")
     collections()
     expressions()
 }
 
+fun stringInterpolation(a: Int, b: String) {
+    println("sum of $a and ${b.length} is ${a + b.length}")
+}
 private fun collections() {
 
     val list = listOf(1, -1, 3).filter { it > 0 }
@@ -20,23 +20,6 @@ private fun collections() {
 
     val evenNumbers = (1..10).filter { it.rem( 2) == 0}
     evenNumbers.forEach {println(it)}
-}
-
-fun methodWithDefaultParameters(message: String, prefix: String = "", suffix: String ="") {
-    println(prefix + ":" + message + ":" + suffix )
-}
-
-
-fun String.extensionFunction() : String {
-    fun prefix(message: String, suffix: String) : String {
-        return message + suffix
-    }
-
-    return prefix(this,": extended")
-}
-
-fun stringInterpolation(a: Int, b: String): Unit {
-    println("sum of $a and ${b.length} is ${a + b.length}")
 }
 
 fun expressions() {
