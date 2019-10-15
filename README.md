@@ -10,12 +10,13 @@
 - Kotlin `with` can be used to access class members see [Customer.kt](src/main/kotlin/Customer.kt) 
 - Kotlin `Singletons` can be declared using `object`. See [Customer.kt/SingletonCustomer](src/main/kotlin/Customer.kt)
 
-### Data Classes
-- [CustomerDataClass.kt](src/main/kotlin/CustomerDataClass.kt) comes with equals/hashcode/toString
+### Data Classes and typealiases
+- [Data Classes](src/main/kotlin/dataClassAndTypealiases.kt) comes with equals/hashcode/toString
 - You can have only val, encourages immutability
+- `typealias`es can be used to create readable code. See [CustomerName typealias](src/main/kotlin/dataClassAndTypealiases.kt)
 
 ### Sealed Classes
-- [SealedCustomer.kt](src/main/kotlin/SealedCustomer.kt) All the subclasses shall be defined
+- [Sealed Classes](src/main/kotlin/SealedCustomer.kt) all the subclasses shall be defined
 - Makes it quite handy to use with pattern matching with when
 
 ### Functions

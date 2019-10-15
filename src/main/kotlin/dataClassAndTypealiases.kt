@@ -1,4 +1,6 @@
-data class CustomerDataClass(val id: Int, val name: String)
+typealias CustomerName = String
+
+data class CustomerDataClass(val id: Int, val name: CustomerName)
 
 
 fun main() {
