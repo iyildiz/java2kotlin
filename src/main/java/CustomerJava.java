@@ -1,5 +1,3 @@
-package java2kotlin;
-
 public class CustomerJava {
     private int id;
     private String name;

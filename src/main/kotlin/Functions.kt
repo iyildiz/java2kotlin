@@ -1,11 +1,9 @@
-package java2kotlin
-
 fun main() {
     methodWithDefaultParameters("abc")
     methodWithDefaultParameters("abc", "z")
     methodWithDefaultParameters("abc", "z", "y")
     println("String ".extensionFunction())
-    stringInterpolation(2,"abcdef")
+    stringInterpolation(2, "abcdef")
     collections()
     expressions()
 }
@@ -42,7 +40,7 @@ fun stringInterpolation(a: Int, b: String): Unit {
 }
 
 fun expressions() {
-    val customer = Customer(12, "Kotlin Customer","email@email123")
+    val customer = Customer(12, "Kotlin Customer", "email@email123")
 
     val whenResult = when(customer.id){
         1 -> { println("one"); 1}
