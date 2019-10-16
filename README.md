@@ -42,7 +42,7 @@
 
 #Coroutines
 - Much faster and cheaper compared to `threads`. See [coroutine v.s thread examples](src/main/kotlin/coroutines.kt)
-- 100K/1 million coroutines can finish very quickly whereas similar number of threads will throw `OutOfMemory` error or will be quite slow (up to 10x)
+- 100K/1 million coroutines can finish very quickly whereas similar number of threads will throw `OutOfMemory` error or will be quite slow ( 10+x for our example)
 - Following dependency shall be added to projects: 
 
         <dependency>
