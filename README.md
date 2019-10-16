@@ -25,9 +25,6 @@
 - **Local function:** You can scope functions inside functions e.g [functions.kt/extensionFunction/prefix](src/main/kotlin/functions.kt)
 - **inline functions:** inline functions don't create a new stack in memory e.g [functions.kt/inlineFunction](src/main/kotlin/functions.kt)
 
-### Functional programming / lambdas
-- Lambdas are a part of the language and quite cheap to use. See [Lambdas](src/main/kotlin/functional.kt)
-- 
 ### Idioms
 - **String interpolation** "sum of $a and ${b.length} is ${a + b.length}" see [idioms.kt/stringInterpolation](src/main/kotlin/idioms.kt)
 - **Collections**: builder functions can be used for list/map and other collections. See [idioms.kt/collections](src/main/kotlin/idioms.kt)
@@ -39,7 +36,22 @@
     - **let** : Executes if not null `nullableCustomer?.let { validateCustomer(it) }`
 - **lazy variables** : their values is assigned when they are accessed first time. See [idioms.kt/lazyLoading](src/main/kotlin/idioms.kt)
 
+### Functional programming / lambdas
+- Lambdas are a part of the language and quite cheap to use. See [Lambdas](src/main/kotlin/functional.kt)
+- 
+
+#Coroutines
+- Much faster and cheaper compared to `threads`. See [coroutine v.s thread examples](src/main/kotlin/coroutines.kt)
+- 100K/1 million coroutines can finish very quickly whereas similar number of threads will throw `OutOfMemory` error or will be quite slow (up to 10x)
+- Following dependency shall be added to projects: 
+
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-core</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
 ### References
 - https://kotlinlang.org/docs/reference/
 - [How to Kotlin - from the Lead Kotlin Language Designer (Google I/O '18)](https://www.youtube.com/watch?v=6P20npkvcb8)
-- 
+- [Safe calls(?.) vs Null checks(!!) in Kotlin by Suneet Agrawal](https://medium.com/@agrawalsuneet/safe-calls-vs-null-checks-in-kotlin-f7c56623ab30)
