@@ -1,6 +1,32 @@
+@file:JvmName("IdiomsUtil")
+
+import java.io.IOException
+
 fun main() {
     stringInterpolation(2, "abcdef")
     nullability()
+    exceptions("123")
+    exceptions("xyz")
+}
+
+fun exceptions(numberAsString: String) {
+
+    val number = try {
+        Integer.parseInt(numberAsString)
+    } catch (e: NumberFormatException) {
+        "return"
+    }
+    val percentage =
+            if (number in 0..100)
+                number
+            else
+                throw IllegalArgumentException("A percentage value must be between 0 and 100: $number")
+    println("percentage: $percentage")
+}
+
+@Throws(IOException::class)
+fun throwsAnExplicitException() {
+    throw IOException("Explicit exception from Kotlin method")
 }
 
 fun stringInterpolation(a: Int, b: String) {

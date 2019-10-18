@@ -1,9 +1,10 @@
 fun main() {
-    lamdas()
+    lambdas()
     collections()
+    ranges()
 }
 
-private fun lamdas() {
+private fun lambdas() {
     val numbers = (1..100).shuffled().toList()
 
     val squares = numbers.filter { it % 8 == 0 }
@@ -26,3 +27,18 @@ private fun collections() {
     val evenNumbers = (1..10).filter { it.rem( 2) == 0}
     evenNumbers.forEach {println(it)}
 }
+
+fun ranges() {
+    fun isLetterOrUnderScores(ch: Char): Boolean {
+        return when (ch) {
+            '_' -> true
+            in 'a'..'z' -> true
+            in 'A'..'Z' -> true
+            else -> false
+        }
+    }
+    println(isLetterOrUnderScores('_'))
+    println(isLetterOrUnderScores('.'))
+}
+
+

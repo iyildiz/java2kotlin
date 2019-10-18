@@ -49,10 +49,14 @@ In order to access them from Java enclosing filename can be used and top level m
     - **Non Safe Calls (!!.)** : `nullableCustomer!!.name` dereference forcefully, make assertion that customer is not null but you may end up with a null pointer exception if your assertion is not true
     - **Elvis Operator (?:)** : `val result = nullableCustomer?.someMethodCall() ?: fallbackIfNullMethodCall()` this can return a custom value if the calling property is null
     - **let** : Executes if not null `nullableCustomer?.let { validateCustomer(it) }`
+- **Exceptions** No checked exceptions
+    - **throw/try** are expressions that can be assigned to any variable
+    - `@Throws(IOException::class)` can be used for forcing Java side explicit checked exception handling
 - **Examples** [Idioms](src/main/kotlin/idioms.kt)
 ### Functional programming / lambdas
 - **Lambdas** are a part of the language and quite cheap to use. See 
 - **Collections**: builder functions can be used for list/map and other collections.
+- **Ranges**: Any comparable type can be used as a Range. `"Kotlin" in "Java".."Scala"` can be used to built up ranges.
 - **Examples** [Lambdas and Collections](src/main/kotlin/functional.kt)
 
 ### Coroutines
