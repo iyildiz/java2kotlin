@@ -1,22 +1,46 @@
 fun main() {
     stringInterpolation(2, "abcdef")
-    expressions()
+    nullability()
 }
 
 fun stringInterpolation(a: Int, b: String) {
     println("sum of $a and ${b.length} is ${a + b.length}")
 }
 
-fun expressions() {
-    val customer = Customer(12, "Kotlin Customer", "email@email123")
+fun nullability() {
 
-    val whenResult = when(customer.id){
-        1 -> { println("one"); 1}
-        2 -> 2
-        3,4 -> 3
-        else -> 0
+    val customerJava = CustomerJava()
+    with(customerJava) {
+        name = "Java Customer Name"
     }
-    val ifResult = if(customer.id == 12) 1 else 0
+    validateJavaCustomer(customerJava)
+    val nullableCustomer = nullableCustomer()
+    nullableCustomer?.let { validateCustomer(it) }
+    val result = nullableCustomer?.someMethodCall() ?: false
+    println("result:$result")
+}
 
-    println("whenResult=$whenResult ifResult=$ifResult")
+class NullableCustomer (val id: Int, var name: String){
+
+    fun someMethodCall(): Boolean? {
+        val num = (1..12).shuffled().first()
+        return if(num %2 == 0) true else null
+    }
+}
+
+fun nullableCustomer(): NullableCustomer? {
+    val num = (1..12).shuffled().first()
+    return if(num %2 == 0) NullableCustomer(12, "nullable") else null
+}
+
+fun validateJavaCustomer(customer: CustomerJava?){
+    if(customer?.name?.startsWith("A") == true){
+        throw Exception()
+    }
+}
+
+fun validateCustomer(customer: NullableCustomer){
+    if(customer.name.startsWith("A")){
+        throw Exception()
+    }
 }
