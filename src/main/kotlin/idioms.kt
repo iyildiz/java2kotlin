@@ -5,7 +5,7 @@ import java.io.IOException
 fun main() {
     stringInterpolation(2, "abcdef")
     nullability()
-    exceptions("123")
+    exceptions("99")
     exceptions("xyz")
 }
 

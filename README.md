@@ -13,7 +13,13 @@
 ### Functions
 - **Named & Default Arguments:** Kotlin has default values for parameters. Also arguments can be named as well and that allows you to change the order of the arguments. 
 `@JvmOverloads` annotation is required to access default argument methods from Java code.  
-- **Extension functions:** Kotlin allows extensions functions on types
+- **Extension functions:** 
+    -- Kotlin allows extensions functions on types and that makes types/apis much simpler
+    -- Extensions allow you add code to classes in other libraries that you don't have access to
+    -- They shall be imported in case of usage out of the package.
+    -- They can be used from Java with the extra receiver parameter
+    -- They can't access private member of the classes they are extending
+    -- There is No Kotlin SDK, it is Java SDK + some extension files
 - **Local function:** You can scope functions inside functions 
 - **inline functions:** inline functions don't create a new stack in memory 
 - **Top level functions**: Functions don't require a wrapping class, they can be sitting at the top level alone. 
