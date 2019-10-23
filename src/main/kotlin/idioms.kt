@@ -5,8 +5,24 @@ import java.io.IOException
 fun main() {
     stringInterpolation(2, "abcdef")
     nullability()
+    safeCasts()
     exceptions("99")
     exceptions("xyz")
+}
+
+fun safeCasts() {
+    val s = "hello"
+    println(s as? Int)    // null
+    println(s as? String)    // "hello"
+    println(s as String?)    // "hello"
+
+    val result = try {
+        println(s as Int?)    // throws class cast exception
+    }catch (ex: Exception){
+        println(ex.message)
+        "return"
+    }
+    println("result of try: $result")
 }
 
 fun exceptions(numberAsString: String) {
@@ -17,10 +33,14 @@ fun exceptions(numberAsString: String) {
         "return"
     }
     val percentage =
+        try {
             if (number in 0..100)
                 number
             else
                 throw IllegalArgumentException("A percentage value must be between 0 and 100: $number")
+        }catch (ex: java.lang.Exception){
+            "exception"
+        }
     println("percentage: $percentage")
 }
 

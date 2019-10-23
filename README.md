@@ -18,6 +18,8 @@
     -- Extensions allow you add code to classes in other libraries that you don't have access to
     -- They shall be imported in case of usage out of the package.
     -- They can be used from Java with the extra receiver parameter
+    -- Receivers can be `nullable` types as well, like `String?`. 
+    But make sure you give a good name telling that the variable calling that method can be null. Other wise users may be confused
     -- They can't access private member of the classes they are extending
     -- There is No Kotlin SDK, it is Java SDK + some extension files
 - **Local function:** You can scope functions inside functions 
@@ -50,17 +52,35 @@ In order to access them from Java enclosing filename can be used and top level m
 
 ### Idioms
 - **String interpolation** "sum of $a and ${b.length} is ${a + b.length}"
-- **Nullability** Once you have `nullable types` using `!` compiler forces you to dereference it under control.
+- **Nullability** 
+    - **Compile time checks** Rather than having runtime `NullPointerException`s compiler forces you with compile time checks.
+    - **nullable types** You can assign `null` to only nullable types using `?`.
     - **Safe Calls (?.)** : `nullableCustomer?.name` dereferences safely only when customer is not null
     - **Non Safe Calls (!!.)** : `nullableCustomer!!.name` dereference forcefully, make assertion that customer is not null but you may end up with a null pointer exception if your assertion is not true
     - **Elvis Operator (?:)** : `val result = nullableCustomer?.someMethodCall() ?: fallbackIfNullMethodCall()` this can return a custom value if the calling property is null
     - **let** : Executes if not null `nullableCustomer?.let { validateCustomer(it) }`
+    - **Optional** nullable types use annotations (`@Nullable/@NotNull`) under the hood and don't create an extra wrapper object like `Optional`s. 
+    That means there is no performance overhead as well.
 - **Exceptions** No checked exceptions
     - **throw/try** are expressions that can be assigned to any variable
     - `@Throws(IOException::class)` can be used for forcing Java side explicit checked exception handling
+- **Safe Casts `as?`** returns null if the cast can't be done. Non-safe type cast `as` throws ClassCastException, if the cast is unsuccessful.
 - **Examples** [Idioms](src/main/kotlin/idioms.kt)
 ### Functional programming / lambdas
 - **Lambdas** are a part of the language and quite cheap to use. See 
+    - Don’t use `it` if it has different types in other lambda lines
+    - Prefer explicit parameter names if `it` might be confusing
+    - Wrap complex lambdas with a well named variable to make it readable
+    - `Lambda`s can be assigned to a variable and passed to other methods. 
+    Even they can be nullable and called safely using `f?.invoke()`
+    - In Java only SAM (Single abstract method) interfaces can be passed as lambdas.
+  **Member References** Can be used to access simple lambdas accessing member varibles/functions
+    - Syntax is same as Java : `Customer::name`
+    - Lambdas can be assigned to variables but functions can't. Functions are clearly different from variables.
+    - Function references `::function` can be assigned to variables. Internally they are converted to lambdas calling that function only.
+    - **Non-bound reference** : Can be used with any instance 
+    - **Bound reference** : Attached to a specific instance of the class.
+    - **::method** syntax can be used to bound to top level or in a class to this instance
 - **Collections**: builder functions can be used for list/map and other collections.
 - **Ranges**: Any comparable type can be used as a Range. `"Kotlin" in "Java".."Scala"` can be used to built up ranges.
 - **Examples** [Lambdas and Collections](src/main/kotlin/functional.kt)
