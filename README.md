@@ -33,6 +33,28 @@ In order to access them from Java enclosing filename can be used and top level m
 - **when is stronger than switch** : It pattern matching is very strong. Any expression can be used. 
 - **Examples** [Control Examples](src/main/kotlin/controls.kt)
 
+### Properties
+- Default getters are created for `val` and getters & setters for `var`
+- Custom properties can be created by overriding using `get & set` keywords
+- getters & setters can be used from Java to access Kotlin properties
+- **Fields** 
+    - Can be accessed inside accessors using keyword `field`. Fields are not accessible to other properties.
+    - Try not to use fields and always us properties instead form both inside & outside
+    - If get/set are customized and `field` keyword is not used in the implementation, no backing field is generated.
+    - Changing visibility of a setter/getters is possible using `private set/get`
+- Interfaces can have properties as well. They are called `open property`. Subclasses will override them.
+- Smart casts don't apply to open properties & mutable variables
+- **Property extensions** 
+    - Like function extensions can be used to add to existing classes
+    - They have to be used inside a class, can't be used at the top level
+- **lateinit** 
+    - Can be used for the cases where you init a property later in the code
+    - You can use a `nullable` property but that will force you to use safe access all the time
+    - `lateinit` saves this problem and throws `kotlin.UninitializedPropertyAccessException` if initialization is not done before usage
+    - `isInitialized` can be called to make sure if initialization is done yet
+    - `lateinit` properties have to be`var` as their value is set later
+    - `lateinit` properties can't be primitive types
+- **Examples** [Property Examples](src/main/kotlin/properties.kt)
 ### Pojo Declarations
 - Unlike Java Kotlin Pojos don't require any getter & setters.
 - Kotlin members variables can be both val & var
@@ -67,6 +89,7 @@ In order to access them from Java enclosing filename can be used and top level m
 - **Safe Casts `as?`** returns null if the cast can't be done. Non-safe type cast `as` throws ClassCastException, if the cast is unsuccessful.
 - **Examples** [Idioms](src/main/kotlin/idioms.kt)
 ### Functional programming / lambdas
+- Kotlin is not purely functional. It combines ides from different paradigms like OO, functional
 - **Lambdas** are a part of the language and quite cheap to use. See 
     - Don’t use `it` if it has different types in other lambda lines
     - Prefer explicit parameter names if `it` might be confusing
