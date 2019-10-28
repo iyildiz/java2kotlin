@@ -1,3 +1,5 @@
+import oo.CustomerDataClass
+
 fun main() {
     lambdas()
     functionTypes()

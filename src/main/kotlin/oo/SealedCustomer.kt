@@ -1,3 +1,5 @@
+package oo
+
 sealed class SealedCustomer
 class PersonalCustomer (val name: String)
 class CorporateCustomer (val corporateName: String)

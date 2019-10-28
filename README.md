@@ -114,13 +114,13 @@ In order to access them from Java enclosing filename can be used and top level m
 - `val/var` before constructor parameters creates properties as well. Without parameters are usual parameters
 - `constructor` can be used to create secondary constructors but the primary one shall be called before any other code
 - Overriding properties in the subclasses shall be taken carefully as `open` properties are called with getters not field values even inside same class.
-- **Examples** [OO Examples](src/main/kotlin/objectoriented.kt)
+- **Examples** [OO Examples](src/main/kotlin/oo/objectoriented.kt)
 #### Pojo Declarations
 - Unlike Java Kotlin Pojos don't require any getter & setters.
 - Kotlin members variables can be both val & var
 - `with` can be used in Kotlin to decompose and access class members 
 - Kotlin `Singletons` can be declared using `object`. 
-- **Examples** [Pojo Examples - Java](src/main/java/CustomerJava.java) and [Pojo Examples - Kotlin](src/main/kotlin/Customer.kt)
+- **Examples** [Pojo Examples - Java](src/main/java/CustomerJava.java) and [Pojo Examples - Kotlin](src/main/kotlin/oo/Customer.kt)
 
 #### enums/Data Classes/typealiases
 - **enums** are similar to Java but declaration is like `enum class ClassName`. Also `;` is used right after constant declaration
@@ -128,21 +128,36 @@ In order to access them from Java enclosing filename can be used and top level m
 - **Data classes are immutable**: You can have only val, encourages immutability
 - ** `--` calls `equals` and `---` can be used for reference equality check. It is quite different than Java. For data classes we have equals implementation coming free.
 - **typealias** es can be used to create readable code.
-- **Examples** [Data Classes and typealiases](src/main/kotlin/modifiers.kt)
+- **Examples** [Data Classes and typealiases](src/main/kotlin/oo/modifiers.kt)
 #### Inner Classes
 - **Nested classes** are by default converted to static (static inner classes in Java)
 - **Inner classes** have to be explicitly defined using `inner` keyword. 
 And they hold a reference to top level class internally. Be aware of memory leaks. 
-- **Examples** [Inner Class examples](src/main/kotlin/modifiers.kt)
+- **Examples** [Inner Class examples](src/main/kotlin/oo/modifiers.kt)
 #### Sealed Classes
 - All the subclasses shall be defined in the same file
 - Makes it quite handy to use with pattern matching with when
 - Under the hood it creates a default private constructor to prevent instantiations/subclasses from Java 
-- **Examples** [Sealed Classes](src/main/kotlin/SealedCustomer.kt) 
+- **Examples** [Sealed Classes](src/main/kotlin/oo/SealedCustomer.kt) 
 #### Class Delegation
 - Implementation of the interfaces can be delegated to instances
-- Can be helpful especially incase of full delegations
-- **Examples** [Class Delegation](src/main/kotlin/classdelegation.kt) 
+- Can be helpful especially in case of full delegations
+- **Examples** [Class Delegation](src/main/kotlin/oo/classdelegation.kt) 
+#### Object Expressions
+- Object expressions `object :` replace Java's anonymous classes in order to create classes with no names on the fly
+- If you have a Java SAM interface prefer a lambda instead of an object expression. You don't need that for Kotlin interfaces.
+- **Examples** [Object Expressions](src/main/kotlin/oo/objects.kt) 
+#### Companion Objects
+- They are special object inside a class created using `companion` keyword
+- Companion objects can implement interfaces which can help a lot.
+- Extensions functions can be added to `companion objects`
+- From Java `Companion` keyword can be used to access. Another alternative is to use `@JvmStatic` annotation in Kotlin
+- Kotlin doesn't use `static` keyword. But that functionality exist via
+    - Top level 
+    - Inside objects
+    - Inside `companion objects`
+- Objects can be nested inside objects and classes but `inner object` can't be used inside a class as it won't know which outer reference to store.
+- **Examples** [Object Expressions](src/main/kotlin/oo/objects.kt) 
 ### Coroutines
 - Much faster and cheaper compared to `threads`. 
 - 100K/1 million coroutines can finish very quickly whereas similar number of threads will throw `OutOfMemory` error or will be quite slow ( 10+x for our example)

@@ -1,3 +1,7 @@
+package oo
+
+import CustomerJava
+
 class Customer (val id: Int, var name: String, var email:String)
 
 fun main() {
@@ -10,10 +14,4 @@ fun main() {
 
     val customerKotlin = Customer(12, "Kotlin Customer", "email@email123")
     println("name:${customerKotlin.name}")
-
-    println("Singleton Customer Name : ${SingletonCustomer.name}")
-}
-
-object SingletonCustomer {
-    val name = "Singleton Customer"
 }

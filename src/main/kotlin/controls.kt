@@ -1,3 +1,5 @@
+import oo.Customer
+
 fun main() {
     whenExp()
     ifExp()

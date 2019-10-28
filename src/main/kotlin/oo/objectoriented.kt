@@ -1,3 +1,5 @@
+package oo
+
 open class Vehicle(reg: String, val model: String){
     open val type = "none"
     val reg: String
