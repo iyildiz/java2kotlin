@@ -72,7 +72,7 @@ In order to access them from Java enclosing filename can be used and top level m
     - `@Throws(IOException::class)` can be used for forcing Java side explicit checked exception handling
 - **Safe Casts `as?`** returns null if the cast can't be done. Non-safe type cast `as` throws ClassCastException, if the cast is unsuccessful.
 - **Examples** [Idioms](src/main/kotlin/idioms.kt)
-### Functional programming / lambdas
+### Functional Programming / Lambdas
 - Kotlin is not purely functional. It combines ides from different paradigms like OO, functional
 - **Lambdas** are a part of the language and quite cheap to use. See 
     - Don’t use `it` if it has different types in other lambda lines
@@ -92,7 +92,7 @@ In order to access them from Java enclosing filename can be used and top level m
 - **Ranges**: Any comparable type can be used as a Range. `"Kotlin" in "Java".."Scala"` can be used to built up ranges.
 - **Examples** [Lambdas and Collections](src/main/kotlin/functional.kt)
 
-### OO programming
+### OO Programming
 - Default declarations are : `public/final`
 - `open` shall be explicitly used to make a class non final
 - There is no `package private` concept. It is replaced by `internal` and declaration is visible inside same `module`
@@ -122,7 +122,7 @@ In order to access them from Java enclosing filename can be used and top level m
 - Kotlin `Singletons` can be declared using `object`. 
 - **Examples** [Pojo Examples - Java](src/main/java/CustomerJava.java) and [Pojo Examples - Kotlin](src/main/kotlin/oop/Customer.kt)
 
-#### enums/Data Classes/typealiases
+#### Enums/Data Classes/Type Aliases
 - **enums** are similar to Java but declaration is like `enum class ClassName`. Also `;` is used right after constant declaration
 - **Kotlin Data Classes** come with equals/hashcode/toString/copy (copies an instance but only changes the specified field)
 - **Data classes are immutable**: You can have only val, encourages immutability
@@ -163,7 +163,15 @@ And they hold a reference to top level class internally. Be aware of memory leak
 - It will inline the values at compile time and increase performance
 - `JvmField` will tell compiler not to generate the getters/setters for fields and make fields accessible
 - `JvmStatic` only makes the properties available without using `INSTANCE`. Access is still via property not field.
-- **Examples** [Object Expressions](src/main/kotlin/oop/constants.kt) 
+- **Examples** [Constants and JvmFields](src/main/kotlin/oop/constants.kt) 
+#### Generics
+- Generics are quite similar to Java
+- They support `nullable` types as well
+- Upper bounds (using `:`) can be used to restricted the types, e.g `T : Any` will not allow nullable types. 
+- Upper bounds can contain type itself and support nullable types as well e.g `T : Comparable<T>` `T: String?`
+- Same names on the extension functions with different generic type receivers don't work. 
+`JvmName` can be used to create different names at bytecode level. That is for Java access. On kotlin side same name can be used.
+- **Examples** [Generics](src/main/kotlin/oop/generics.kt) 
 ### Coroutines
 - Much faster and cheaper compared to `threads`. 
 - 100K/1 million coroutines can finish very quickly whereas similar number of threads will throw `OutOfMemory` error or will be quite slow ( 10+x for our example)
