@@ -1,4 +1,4 @@
-package oo
+package oop
 
 object Constants {
     @JvmStatic val jvmStatic = "JVMSTATIC"

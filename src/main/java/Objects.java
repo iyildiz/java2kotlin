@@ -1,6 +1,6 @@
-import oo.CompanionOuter;
-import oo.Constants;
-import oo.SingletonCustomer;
+import oop.CompanionOuter;
+import oop.Constants;
+import oop.SingletonCustomer;
 
 public class Objects {
 

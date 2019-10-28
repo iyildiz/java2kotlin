@@ -1,4 +1,4 @@
-import oo.CustomerDataClass
+import oop.CustomerDataClass
 
 fun main() {
     lambdas()

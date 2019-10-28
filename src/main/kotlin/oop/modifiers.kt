@@ -1,4 +1,4 @@
-package oo
+package oop
 
 typealias CustomerName = String
 

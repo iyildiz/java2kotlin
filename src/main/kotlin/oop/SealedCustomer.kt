@@ -1,4 +1,4 @@
-package oo
+package oop
 
 sealed class SealedCustomer
 class PersonalCustomer (val name: String)

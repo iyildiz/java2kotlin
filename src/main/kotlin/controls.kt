@@ -1,4 +1,4 @@
-import oo.Customer
+import oop.Customer
 
 fun main() {
     whenExp()
