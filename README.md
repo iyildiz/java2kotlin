@@ -158,6 +158,12 @@ And they hold a reference to top level class internally. Be aware of memory leak
     - Inside `companion objects`
 - Objects can be nested inside objects and classes but `inner object` can't be used inside a class as it won't know which outer reference to store.
 - **Examples** [Object Expressions](src/main/kotlin/oo/objects.kt) 
+#### Constants
+- `const` keyword can be used for primitive types and Strings. 
+- It will inline the values at compile time and increase performance
+- `JvmField` will tell compiler not to generate the getters/setters for fields and make fields accessible
+- `JvmStatic` only makes the properties available without using `INSTANCE`. Access is still via property not field.
+- **Examples** [Object Expressions](src/main/kotlin/oo/constants.kt) 
 ### Coroutines
 - Much faster and cheaper compared to `threads`. 
 - 100K/1 million coroutines can finish very quickly whereas similar number of threads will throw `OutOfMemory` error or will be quite slow ( 10+x for our example)
