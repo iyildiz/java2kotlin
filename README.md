@@ -228,6 +228,30 @@ And they hold a reference to top level class internally. Be aware of memory leak
             <version>1.3.2</version>
         </dependency>
 - **Examples** [coroutine v.s thread examples](src/main/kotlin/coroutines.kt)
+
+### Inline Functions
+They look like built in construct but actually they are just library functions
+- **run** : runs the lambda and returns back the last expression as result
+- **let** : allows to check the argument/receiver for being non-null, also creates a ne variable internally
+- **takeIf**: If the given predicate is satisfied returns the receiver object, otherwise returns null.
+- **takeUnless**: Opposite of `takeIf`. Both of them can be helpful in chained calls
+- **repeat**: repeats an action for a given number of times. Can be used for simple scenarios instead of a `for` loop. 
+- All of the functions above are defined as inline : `inline fun <R> run(block: () -> R): R = block()`
+    - Inline functions doesn't bring any performance overhead 
+    - The code inside lambda is replaced with the inline function call. 
+    The final bytecode is same as hardcoding the body without any method usage
+    - No extra anonymous classes or variables are created
+    - There are some restrictions on the lambdas that can be used inside an inline function. 
+    You can't store the lambda anywhere to a variable. You have to call it directly
+- **`filter`, `withLock` and `use`** are other examples of inlined functions 
+- **`@InlineOnly`** Tells that this function should not be called directly without inlining. 
+  Those functions will not be available from Java
+- **Examples** [Inline Functions](src/main/kotlin/inlinefunctions.kt)
+#### When shall I use inline functions
+- By default don't use inline for custom methods as VMs(Hotspot) does this for you.
+- Reducing number of stack frames shall not be the reason for using `inline` as this shall be handled by VMs automatically 
+- `inline` can be helpful fo reducing the **object allocation for lambdas**
+- Only small code portions only shall be set as inline
 ### References
 - https://kotlinlang.org/docs/reference/
 - [How to Kotlin - from the Lead Kotlin Language Designer (Google I/O '18)](https://www.youtube.com/watch?v=6P20npkvcb8)

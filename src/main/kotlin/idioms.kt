@@ -66,7 +66,7 @@ fun nullability() {
     println("result:$result")
 }
 
-class NullableCustomer (val id: Int, var name: String){
+data class NullableCustomer (val id: Int, var name: String){
 
     fun someMethodCall(): Boolean? {
         val num = (1..12).shuffled().first()
