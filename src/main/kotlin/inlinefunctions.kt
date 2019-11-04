@@ -3,6 +3,22 @@ fun main() {
     inlineLet()
     inlineTakeIfAndUnless()
     inlineRepeat()
+    libraryFunctions()
+}
+
+fun libraryFunctions() {
+    val ages = listOf(12, 2, 23, 65, 16, 37)
+    val agesUnder20UsingSize = ages.filter { it < 20 }.size
+    val agesUnder20UsingCount = ages.count { it < 20 }
+    println("count : ${agesUnder20UsingSize == agesUnder20UsingCount}")
+
+    val agesSortedReverse = ages.sortedBy { it }.reversed()
+    val agesSortedReverseUsingDescending = ages.sortedByDescending { it }
+    println("sort descending : ${agesSortedReverse == agesSortedReverseUsingDescending}")
+
+    val agesMappedFilteredNotNulls = ages.map { if(it > 15) "16+:$it" else null}.filterNotNull()
+    val agesMappedNotNulls = ages.mapNotNull { if(it > 15) "16+:$it" else null}
+    println("map not null : ${agesMappedFilteredNotNulls == agesMappedNotNulls}")
 }
 
 fun inlineRepeat() {

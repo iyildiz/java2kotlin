@@ -277,6 +277,7 @@ They look like built in construct but actually they are just library functions
     - It allows you to do custom operations between the yields
     - Its implementation is based on `coroutines`
     - No elements are yielded until a terminal operation is called
+- Lazy functions like `groupingBy` can be used instead of eager ones like `groupBy` 
 ### References
 - https://kotlinlang.org/docs/reference/
 - [How to Kotlin - from the Lead Kotlin Language Designer (Google I/O '18)](https://www.youtube.com/watch?v=6P20npkvcb8)
