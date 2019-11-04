@@ -252,6 +252,31 @@ They look like built in construct but actually they are just library functions
 - Reducing number of stack frames shall not be the reason for using `inline` as this shall be handled by VMs automatically 
 - `inline` can be helpful fo reducing the **object allocation for lambdas**
 - Only small code portions only shall be set as inline
+
+### Sequences
+#### Collections v.s Sequences
+- Operations on Collections are great as long as you make a **single function call**. **Lambdas are inlined**.
+- **Chain of calls** on collections will end up intermediate collections and performance overheads.
+- Collection operations are **eager** and are applied **horizontally** to all collection elements
+- Sequences are **like Java 8 streams** and operations on them are **lazy** and are applied **vertically** to only the elements that are required.
+- Sequences **don't create intermediate collections**. 
+- None of the intermediate operations are applied until a terminal operation is called on sequences
+    - **intermediate operations**: map, filter and any other operation returning a sequence. They are **not inlined** as they shall be stored.
+    - **terminal operations**: Any other operation returning anything other than a sequence. They **are inlined**
+- **Order of the operation** is very important for sequences. It may change the number of operations applied a lot.
+#### Sequences
+- They have `operator fun iterator` to be usable by a `for` loop
+- They don't extend from `Iterable/Collection` inorder to distinguish lazy/eager differentiation
+- Extensions on sequences are very similar to ones on collections to make it easy to work on
+- `generateSequence` can be used to create sequences from scratch
+    - Stops when a `null` is return as an element
+    - Overloaded version which takes the first element can be used to generate infinite seq
+- `yield` library function als can be used to generate sequences in a wider customized way
+    - It works lazily and will not do anything unless required
+    - It can return a single value/collection/sequence using `yiled` and `yieldAll`
+    - It allows you to do custom operations between the yields
+    - Its implementation is based on `coroutines`
+    - No elements are yielded until a terminal operation is called
 ### References
 - https://kotlinlang.org/docs/reference/
 - [How to Kotlin - from the Lead Kotlin Language Designer (Google I/O '18)](https://www.youtube.com/watch?v=6P20npkvcb8)
