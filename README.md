@@ -278,6 +278,22 @@ They look like built in construct but actually they are just library functions
     - Its implementation is based on `coroutines`
     - No elements are yielded until a terminal operation is called
 - Lazy functions like `groupingBy` can be used instead of eager ones like `groupBy` 
+- **Examples** [Sequences](src/main/kotlin/sequences.kt)
+
+### Lambda with Receiver
+- It is a syntactic sugar for the lambda and takes its first parameter as `this`
+- It is the lambda version of extension functions. Types are extended to accept lambdas.
+- They can be used to create DSLs in Kotlin, e.g HTML, Gradle build scripts 
+- Function `with` is implemented using lambda with receiver:
+`inline fun <T, R> with(
+  receiver: T,
+  block: T.() -> R
+ ): R = receiver.block()`
+#### Functions using Lambda & Lambda with Receiver 
+- `run` is like `with` but it is an extension and can be applied to a `nullable` receiver
+- `apply` returns the receiver as a result and is helpful in case of chained calls
+- `also` is like `apply` but it takes a `regular lambda` not `lambda receiver type`
+- **Examples** [Lambda with Receiver](src/main/kotlin/sequences.kt) 
 ### References
 - https://kotlinlang.org/docs/reference/
 - [How to Kotlin - from the Lead Kotlin Language Designer (Google I/O '18)](https://www.youtube.com/watch?v=6P20npkvcb8)
