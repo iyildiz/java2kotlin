@@ -294,6 +294,61 @@ They look like built in construct but actually they are just library functions
 - `apply` returns the receiver as a result and is helpful in case of chained calls
 - `also` is like `apply` but it takes a `regular lambda` not `lambda receiver type`
 - **Examples** [Lambda with Receiver](src/main/kotlin/sequences.kt) 
+
+### Types
+- There is no primitive type in Kotlin
+    - Kotlin Int is converted to `int` primitive type. Int? is converted to `Integer` wrapper type
+    - Double/Float/Boolean applies the same rule
+    - Generic type arguments are always converted to `Integer` wrapper type. 
+    - Kotlin `Array<Int>` is converted to Java `Integer[]`. `IntArray` class will generate `int[]`
+- Kotlin String is converted to `java.lang.String`. It modifies the String Api
+    - Some of the confusing methods are hidden
+    - `replaceAll` in Java accepts regex parameters as String. Kotlin String uses `replace` with String and Regex object parameters
+- `Any` is the super type of all nun nullable types and is converted to `java.lang.Object`
+- Kotlin `Function types` are replaced with **corresponding interfaces** if they are **not inlined**
+    - `() -> T` is converted to `Function0<T>`
+    - `(T) -> R` is converted to `Function1<T,R>`
+    - `(T,U) -> R` is converted to `Function2<T,U,R>`
+    - `f()` is a short version of `f.invoke()` (Function0/1/2.. interfaces declare `invoke()` method)
+    - nullable function types can be called using `f?.inovke()`
+- Kotlin arrays are converted to Java arrays
+    - `Array<Int>` is converted to `Integer[]` 
+    - `IntArray` is converted to `int[]` 
+    - Kotlin arrays also use reference check for `equals` as they are converted to Java.
+    Extension `contentEquals` can be used to compare the content of arrays
+    - Kotlin has arrays mainly for `Java interoperability`. 
+    Kotlin mutable list uses ArrayList under the hood and shall be preferred to use Arrays. 
+    Performance is very similar for ArrayList and Array
+- `Nothing` is the subtype of all the classes in Kotlin type hierarchy
+    - A function throwing exception can be changed to return `Nothing`
+    - `Unit` functions complete normally, `Nothing` functions don't finish but returns (not throw!) an exception
+    - Java `void` correspondence in Kotlin is `Unit` not `Nothing`
+    - `Nothing` is required to handle the exception returning branches of the code. 
+    We can keep the return types as they are as `Nothing` is a subtype for all the other types.
+- There is also a **type hierarchy for nullable types**. 
+    - Indeed `Any?` is the super type of `Any`
+    - `Nothing?` can be expressed with `null` literal 
+- **Examples** [Type Examples](src/main/kotlin/types.kt)     
+#### Java to Kotlin types 
+- `@Nullable` annotations in Java are visible in Kotlin as`Type?` nullable type     
+- `@NotNull` annotations in Java are are visible in Kotlin as`Type`  
+- Java classes with no (@Nullable/@NotNull) annotations are visible in Kotlin as **`Type!` called platform type**
+    - It comes from Java and appears in error messages ans is a type of `unknown nullability`
+    - `Type!` us a notation and not a syntax and can't be declared in Kotlin
+    - It is solution for Java/Kotlin mix projects as converting Java classes to `Type?` would end up too many `!!` usages
+    - Platform types (`Type!`) are allowed to be de-referenced without null check. 
+    That means you may end up throwing `NullPointerException` 
+- Two ways to prevent NPEs coming from Java Platform types (Type!)
+    - Annotate Java classes with `@Nullable/@NotNullable`
+    - Specify types on Kotlin side explicitly
+- Specifying explicit types may throw runtime IllegalStateException sometimes but it is much clearer than a NPE
+- Kotlin Collections are using Java collections under the hood
+    - `java.util.List` will be represented by **Kotlin List & MutableList** 
+    - Kotlin readonly collections hide some methods not to allow you to add/remove to collections
+    - Kotlin readonly collections are not immutable as you can update individual items
+    - Mutable versions of the collections can be used
+    - Platform types are used to convert between Java (List) to Kotlin multiple classes (MutableList/List)
+- **Examples** [Type Examples](src/main/kotlin/types.kt)   
 ### References
 - https://kotlinlang.org/docs/reference/
 - [How to Kotlin - from the Lead Kotlin Language Designer (Google I/O '18)](https://www.youtube.com/watch?v=6P20npkvcb8)
