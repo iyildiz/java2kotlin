@@ -1,4 +1,4 @@
-import com.sun.tools.javac.util.List;
+import java.util.List;
 import oop.GenericsUtil;
 
 public class Generics {
