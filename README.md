@@ -1,6 +1,6 @@
 # Java to Kotlin
 ### Build
-[Kotlin maven plugin 1.3.50 is used](https://kotlinlang.org/docs/reference/using-maven.html)
+[Kotlin maven plugin 1.4.31 is used](https://kotlinlang.org/docs/reference/using-maven.html)
 `mvn clean compile`
 - Kotlin allows a `main function` per file. Each of them can be run independently.
 
@@ -225,7 +225,7 @@ And they hold a reference to top level class internally. Be aware of memory leak
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-coroutines-core</artifactId>
-            <version>1.3.2</version>
+            <version>${kotlinx-coroutines-core.version}</version>
         </dependency>
 - **Examples** [coroutine v.s thread examples](src/main/kotlin/coroutines.kt)
 
