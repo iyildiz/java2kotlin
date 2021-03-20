@@ -14,7 +14,7 @@ class CompanionOuter{
 }
 
 fun main(){
-    singleton()
+    println("Singleton Customer Name : ${singleton().name}")
     objectExpressions()
     companions()
 }
@@ -40,6 +40,6 @@ fun generateCustomerUsingObjectExpressionsAndJavaSAMConversion(): CustomerDelega
     )
 }
 
-private fun singleton() {
-    println("Singleton Customer Name : ${SingletonCustomer.name}")
+fun singleton() : SingletonCustomer {
+    return SingletonCustomer
 }

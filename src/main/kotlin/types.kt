@@ -67,11 +67,15 @@ fun nullableFunctionCalls() {
     println("invoke = $invoke nullableInvoke = $nullableInvoke")
 }
 
-fun arrays() {
-    val first = intArrayOf(1, 2, 3)
-    val second = intArrayOf(1, 2, 3)
+private fun arrays() {
+    val first = initIntArray(1, 2, 3)
+    val second = initIntArray(1, 2, 3)
     println("equals calls reference equality for arrays: ${first == second}")
     println("contentEquals can be used for arrays: ${first.contentEquals(second)}")
+}
+
+fun initIntArray(vararg elements: Int) : IntArray {
+    return intArrayOf(*elements)
 }
 
 fun kotlinString() {
