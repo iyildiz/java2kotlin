@@ -133,7 +133,7 @@ It is a design choice made to keep language simple.
     - They are **immutable**: You can have only val, encourages immutability
     - **Avoid using `var` variables** with `data classes`. It will cause problem in case of usage inside maps. 
     They can be set as private or excluded from constructor so that they are excluded from equals/hashcode generation
-    - ** `--` calls `equals` and `---` can be used for **reference equality check**. 
+    - ** `==` calls `equals` and `===` can be used for **reference equality check**. 
     It is quite different than Java. For data classes we have equals implementation coming free.
 - **typealias** es can be used to create readable code.
 - **Examples** [Data Classes and typealiases](src/main/kotlin/oop/modifiers.kt)
