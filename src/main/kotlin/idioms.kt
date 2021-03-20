@@ -66,7 +66,7 @@ fun nullability() {
     println("result:$result")
 }
 
-data class NullableCustomer (val id: Int, var name: String){
+data class IdiomsCustomer (val id: Int, var name: String){
 
     fun someMethodCall(): Boolean? {
         val num = (1..12).shuffled().first()
@@ -74,9 +74,9 @@ data class NullableCustomer (val id: Int, var name: String){
     }
 }
 
-fun nullableCustomer(): NullableCustomer? {
+fun nullableCustomer(): IdiomsCustomer? {
     val num = (1..12).shuffled().first()
-    return if(num %2 == 0) NullableCustomer(12, "nullable") else null
+    return if(num %2 == 0) IdiomsCustomer(12, "nullable") else null
 }
 
 fun validateJavaCustomer(customer: CustomerJava?){
@@ -85,7 +85,7 @@ fun validateJavaCustomer(customer: CustomerJava?){
     }
 }
 
-fun validateCustomer(customer: NullableCustomer){
+fun validateCustomer(customer: IdiomsCustomer){
     if(customer.name.startsWith("A")){
         throw Exception()
     }

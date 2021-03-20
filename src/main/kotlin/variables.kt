@@ -23,3 +23,18 @@ fun lazyVal() {
     println("lazyVal is not set yet :(")
     println("lazyVal: $lazyVal")
 }
+
+fun lazyLoadUser(userService : UserService, userName: String) {
+    val lazyValUserName: String by lazy {
+        userService.initUser()
+        userName
+    }
+    userService.reload()
+    userService.save(lazyValUserName)
+}
+
+interface UserService {
+    fun initUser()
+    fun reload()
+    fun save(userName: String)
+}

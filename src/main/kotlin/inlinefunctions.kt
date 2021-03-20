@@ -35,8 +35,8 @@ fun inlineTakeIfAndUnless() {
 
 fun inlineLet() {
 
-    fun printCustomer(customer: NullableCustomer) = println("customer= $customer")
-    val nullableCustomer : NullableCustomer? = nullableCustomer()
+    fun printCustomer(customer: IdiomsCustomer) = println("customer= $customer")
+    val nullableCustomer : IdiomsCustomer? = nullableCustomer()
     nullableCustomer?.let { printCustomer(it) }
 }
 

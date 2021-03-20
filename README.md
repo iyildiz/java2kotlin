@@ -31,7 +31,10 @@ In order to access them from Java enclosing filename can be used and top level m
 
 ### Controls
 - **If & when are expressions** : There is no requirement for a ternary operator.
-- **when is stronger than switch** : Its pattern matching stronger. 
+- **when pattern matching is stronger than switch**
+  - Any type can be used, smart casts are available as well
+  - Multiple choices, ranges are possible
+  - Even no parameter is required just a when block is OK
 - **Kotlin does not support full pattern matching**. A combination of **when + smart casts** solves most of the cases. 
 It is a design choice made to keep language simple.
 - **Examples** [Control Examples](src/main/kotlin/controls.kt)
