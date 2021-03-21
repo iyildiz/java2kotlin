@@ -62,15 +62,14 @@ fun nullability() {
     validateJavaCustomer(customerJava)
     val nullableCustomer = nullableCustomer()
     nullableCustomer?.let { validateCustomer(it) }
-    val result = nullableCustomer?.someMethodCall() ?: false
+    val result = nullableCustomer?.hasEvenId() ?: false
     println("result:$result")
 }
 
 data class IdiomsCustomer (val id: Int, var name: String){
 
-    fun someMethodCall(): Boolean? {
-        val num = (1..12).shuffled().first()
-        return if(num %2 == 0) true else null
+    fun hasEvenId(): Boolean? {
+        return if(id %2 == 0) true else null
     }
 }
 

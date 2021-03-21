@@ -120,7 +120,8 @@ It is a design choice made to keep language simple.
 - In Kotlin you can put several classes/top level functions in one class
 - Package name doesn't have to match directory structure.
 - `val/var` before constructor parameters creates properties as well. Without parameters are usual parameters
-- `constructor` can be used to create secondary constructors but the primary one shall be called before any other code
+- `constructor` can be used to create secondary constructors, but the primary one shall be called before any other code
+- `init` block is run right after primary constructor, before secondary constructors and any other code
 - Overriding properties in the subclasses shall be taken carefully as `open` properties are called with getters not field values even inside same class.
 - **Examples** [OO Examples](src/main/kotlin/oop/objectoriented.kt)
 #### Pojo Declarations
