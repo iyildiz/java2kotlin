@@ -1,11 +1,12 @@
 @file:JvmName("FunctionUtil")
 
 fun main() {
-    methodWithDefaultParameters("abc")
-    methodWithDefaultParameters("abc", "(")
-    methodWithDefaultParameters("abc", "(", ")")
-    methodWithDefaultParameters("abc", suffix=")")//named argument used
-    println("String ".extensionFunction())
+    println(methodWithDefaultParameters("abc"))
+    println(methodWithDefaultParameters("abc", "("))
+    println(methodWithDefaultParameters("abc", "(", ")"))
+    println(methodWithDefaultParameters("abc", suffix=")"))//named argument used
+    println(methodWithDefaultParameters(prefix = "(", message = "abc", suffix=")"))//named arguments in different order
+    println("String ".extensionFunction(": extended"))
     println(inlineFunction { x, y -> x + y })
 }
 
@@ -16,14 +17,14 @@ fun inlineFunction(f:(Int, Int) -> Int) : Int {
 }
 
 @JvmOverloads
-fun methodWithDefaultParameters(message: String, prefix: String = "", suffix: String ="") {
-    println(prefix + ":" + message + ":" + suffix )
+fun methodWithDefaultParameters(message: String, prefix: String = ":", suffix: String =":"): String {
+    return "$prefix$message$suffix"
 }
 
-fun String.extensionFunction() : String {
+fun String.extensionFunction(extensionSuffix: String) : String {
     fun prefix(message: String, suffix: String) : String {
         return message + suffix
     }
 
-    return prefix(this,": extended")
+    return prefix(this, extensionSuffix)
 }

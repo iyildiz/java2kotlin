@@ -2,9 +2,11 @@ import java.io.IOException;
 
 public class FunctionsJava {
     public static void main(String[] args) {
-        FunctionUtil.extensionFunction("hello");
+        FunctionUtil.extensionFunction("hello", ": extended");
         System.out.println(FunctionUtil.topLevelFunction());
+        FunctionUtil.methodWithDefaultParameters("abc");
         FunctionUtil.methodWithDefaultParameters("abc", "(");
+        FunctionUtil.methodWithDefaultParameters("abc", "(", "/");
         kotlinMethodThrowingExplicitException();
     }
 

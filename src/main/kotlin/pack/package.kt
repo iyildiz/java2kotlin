@@ -4,5 +4,5 @@ package pack
 import extensionFunction
 
 fun main() {
-    "".extensionFunction() //see import above
+    "".extensionFunction(": extended") //see import above
 }

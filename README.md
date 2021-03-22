@@ -3,6 +3,7 @@
 [Kotlin maven plugin 1.4.31 is used](https://kotlinlang.org/docs/reference/using-maven.html)
 `mvn clean compile`
 - Kotlin allows a `main function` per file. Each of them can be run independently.
+- There is No Kotlin SDK, it is Java SDK + some extension files
 
 ### Variables
 - **val** : read-only reference (`final` in Java). 
@@ -14,15 +15,14 @@
 - **Named & Default Arguments:** Kotlin has default values for parameters. Also arguments can be named as well and that allows you to change the order of the arguments. 
 `@JvmOverloads` annotation is required to access default argument methods from Java code.  
 - **Extension functions:** 
-    -- Kotlin allows extensions functions on types and that makes types/apis much simpler
-    -- Extensions allow you add code to classes in other libraries that you don't have access to
-    -- They shall be imported in case of usage out of the package. 
-    This allows adding some features that are only applicable to some modules and are hidden from the rest.
-    -- They can be used from Java with the extra receiver parameter
-    -- Receivers can be `nullable` types as well, like `String?`. 
-    But make sure you give a good name telling that the variable calling that method can be null. Other wise users may be confused
-    -- They can't access private member of the classes they are extending
-    -- There is No Kotlin SDK, it is Java SDK + some extension files
+    - Kotlin allows extensions functions on types and that makes types/apis much simpler
+    - Extensions allows adding code to classes in other libraries that you don't have access to
+    - They shall be imported in case of usage out of the package. 
+    - This allows adding some features that are only applicable to some modules and are hidden from the rest.
+    - They can be used from Java with the extra receiver parameter
+    - Receivers can be `nullable` types as well, like `String?`
+    - Make sure you give a good name telling that the variable calling that method can be null. Other wise users may be confused
+    - They can't access private members of the classes they are extending
 - **Local function:** You can scope functions inside functions 
 - **inline functions:** inline functions don't create a new stack in memory 
 - **Top level functions**: Functions don't require a wrapping class, they can be sitting at the top level alone. 
@@ -67,9 +67,9 @@ It is a design choice made to keep language simple.
 - **Nullability** 
     - **Compile time checks** Rather than having runtime `NullPointerException`s compiler forces you with compile time checks.
     - **nullable types** You can assign `null` to only nullable types using `?`.
-    - **Safe Calls (?.)** : `nullableCustomer?.name` dereferences safely only when customer is not null
-    - **Non Safe Calls (!!.)** : `nullableCustomer!!.name` dereference forcefully, make assertion that customer is not null but you may end up with a null pointer exception if your assertion is not true
-    - **Elvis Operator (?:)** : `val result = nullableCustomer?.someMethodCall() ?: fallbackIfNullMethodCall()` this can return a custom value if the calling property is null
+    - **Safe call operator (?.)** : `nullableCustomer?.name` dereferences safely only when customer is not null
+    - **not-null assertion operator (!!.)** : `nullableCustomer!!.name` dereference forcefully, make assertion that customer is not null but you may end up with a null pointer exception if your assertion is not true
+    - **Elvis operator (?:)** : `val result = nullableCustomer?.someMethodCall() ?: fallbackIfNullMethodCall()` this can return a custom value if the calling property is null
     - **let** : Executes if not null `nullableCustomer?.let { validateCustomer(it) }`
     - **Optional** nullable types use annotations (`@Nullable/@NotNull`) under the hood and don't create an extra wrapper object like `Optional`s. 
     That means there is no performance overhead as well.

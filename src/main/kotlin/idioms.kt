@@ -17,7 +17,7 @@ fun safeCasts() {
     println(s as String?)    // "hello"
 
     val result = try {
-        println(s as Int?)    // throws class cast exception
+        println(s as Int)    // throws class cast exception
     }catch (ex: Exception){
         println(ex.message)
         "return"
