@@ -58,7 +58,7 @@ class IdiomsTest {
         @Test
         fun `not-null assertion operator throws KotlinNullPointerException for null values`() {
             val nullableCustomer : IdiomsCustomer? = null
-            assertThrows<KotlinNullPointerException> {
+            assertThrows<NullPointerException> {
                 nullableCustomer!!.name
             }
         }
