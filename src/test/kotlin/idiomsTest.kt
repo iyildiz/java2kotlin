@@ -38,24 +38,36 @@ class IdiomsTest {
         fun `validateCustomer does not throw Exception`() {
             validateCustomer(IdiomsCustomer(12, "bc"))
         }
+
+        @Test
+        fun `nullableCustomer with non null value`() {
+
+            val nullableCustomer : IdiomsCustomer? = IdiomsCustomer(4, "not null")
+            val result = nullableCustomer?.hasEvenId() ?: false
+            assertThat(result).isEqualTo(true)
+        }
+
+        @Test
+        fun `nullableCustomer with null value`() {
+
+            val nullableCustomer : IdiomsCustomer? = null
+            val result = nullableCustomer?.hasEvenId() ?: false
+            assertThat(result).isEqualTo(false)
+        }
+
+        @Test
+        fun `not-null assertion operator throws KotlinNullPointerException for null values`() {
+            val nullableCustomer : IdiomsCustomer? = null
+            assertThrows<KotlinNullPointerException> {
+                nullableCustomer!!.name
+            }
+        }
+
+        @Test
+        fun `not-null assertion operator does not throw Exception for non null values`() {
+            val nullableCustomer : IdiomsCustomer? = IdiomsCustomer(5, "not null")
+
+            nullableCustomer!!.name
+        }
     }
-
-
-    @Test
-    fun `nullableCustomer with non null value`() {
-
-        val nullableCustomer = nullableCustomer()
-        val result = nullableCustomer?.hasEvenId() ?: false
-        assertThat(result).isEqualTo(true)
-    }
-
-
-    @Test
-    fun `nullableCustomer with null value`() {
-
-        val nullableCustomer : IdiomsCustomer? = null
-        val result = nullableCustomer?.hasEvenId() ?: false
-        assertThat(result).isEqualTo(false)
-    }
-
 }

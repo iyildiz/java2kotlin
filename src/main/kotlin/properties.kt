@@ -6,7 +6,6 @@ class Person (var name: String, val age:Int){
             return age < 16
         }
     var id = Random.nextInt()
-    private set
 
     fun appendCharToName(ch : Char){
         val sb = StringBuilder(name).append("-")
@@ -38,6 +37,7 @@ class iPhone : MobilePhone {
 
 class LateInitClass {
     lateinit var lateinitVar: String
+    //lateinit var lateinitVarPrimitive: Int ==> Compilation error, primitives are not allowed
     fun initialize() {
         println(this::lateinitVar.isInitialized) // false
         lateinitVar = "value"

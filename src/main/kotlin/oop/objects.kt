@@ -6,10 +6,24 @@ object SingletonCustomer {
     val name = "Singleton Customer"
 }
 
-class CompanionOuter{
+class CompanionOuter {
+    val outerField = "Outer Field"
     companion object {
         val name = "Inner Companion"
+        @JvmField val postCode = "Xyz"
         @JvmStatic val address = "Inner Companion Jvm Static"
+        fun factoryMethod() : CompanionOuter {
+            return CompanionOuter()
+        }
+
+        fun accessOuterClassFieldsAndMethods() : String {
+            val anInstanceOfOuterClass = factoryMethod()
+            return anInstanceOfOuterClass.getCustomOuterField() + anInstanceOfOuterClass.outerField
+        }
+    }
+
+    fun getCustomOuterField() : String {
+        return outerField
     }
 }
 
@@ -20,8 +34,9 @@ fun main(){
 }
 
 fun companions() {
-
-    println("Access companion object : ${CompanionOuter.name} ${CompanionOuter.address}")
+    println("Access companion object fields : ${CompanionOuter.name} ${CompanionOuter.address}")
+    println("Access companion object methods : ${CompanionOuter.factoryMethod().outerField}")
+    println("Access companion object methods : ${CompanionOuter.accessOuterClassFieldsAndMethods()}")
 }
 
 fun objectExpressions() {

@@ -1,5 +1,8 @@
 import io.mockk.*
+import oop.Customer
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import java.util.concurrent.atomic.AtomicInteger
 
 class variablesTest {
     @Test
@@ -29,5 +32,20 @@ class variablesTest {
             mockUserService.initUser()
             mockUserService.save("lazyUserName")
         }
+    }
+
+    @Test
+    fun `lazy block is used only once`() {
+
+        val numOfInits = AtomicInteger()
+        val lazyValue: Customer by lazy {
+            numOfInits.incrementAndGet()
+            Customer(1, "name", "email")
+        }
+
+        lazyValue
+        lazyValue
+
+        assertThat(numOfInits.get()).isEqualTo(1)
     }
 }

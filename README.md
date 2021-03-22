@@ -172,7 +172,10 @@ And they hold a reference to top level class internally. Be aware of memory leak
 - Objects can be nested inside objects and classes but `inner object` can't be used inside a class as it won't know which outer reference to store.
 - **Examples** [Object Expressions](src/main/kotlin/oop/objects.kt) 
 #### Constants
-- `const` keyword can be used for primitive types and Strings. 
+- `const` keyword is for compile time constants only
+  - Can be used with primitive types and Strings
+  - Can't be assigned to a function or any class
+  - `val` is contrary can be used with runtime constants
 - It will inline the values at compile time and increase performance
 - `JvmField` will tell compiler not to generate the getters/setters for fields and make fields accessible
 - `JvmStatic` only makes the properties available without using `INSTANCE`. Access is still via property not field.
@@ -287,8 +290,8 @@ They look like built in construct but actually they are just library functions
 ### Lambda with Receiver
 - It is a syntactic sugar for the lambda and takes its first parameter as `this`
 - It is the lambda version of extension functions. Types are extended to accept lambdas.
-- They can be used to create DSLs in Kotlin, e.g HTML, Gradle build scripts 
-- Function `with` is implemented using lambda with receiver:
+- They can be used to create DSLs in Kotlin, e.g. HTML, Gradle build scripts 
+- Function `with` is implemented using lambda with a receiver:
 `inline fun <T, R> with(
   receiver: T,
   block: T.() -> R
@@ -297,7 +300,7 @@ They look like built in construct but actually they are just library functions
 - `run` is like `with` but it is an extension and can be applied to a `nullable` receiver
 - `apply` returns the receiver as a result and is helpful in case of chained calls
 - `also` is like `apply` but it takes a `regular lambda` not `lambda receiver type`
-- **Examples** [Lambda with Receiver](src/main/kotlin/sequences.kt) 
+- **Examples** [Lambda with Receiver](src/main/kotlin/lambdaWithReceiver.kt) 
 
 ### Types
 - There is no primitive type in Kotlin
