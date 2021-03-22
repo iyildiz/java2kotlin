@@ -5,24 +5,20 @@ fun main() {
     kotlinString()
     nullableFunctionCalls()
     arrays()
-    nothing()
-    javaToKotlinTypesAnnotations()
     javaToKotlinTypesTypeInference()
+    javaToKotlinTypesAnnotations()
+    nothing()
 }
 
 fun javaToKotlinTypesTypeInference() {
     val javaCustomer = CustomerJava()
 
-    println("NPE from Java")
-    javaCustomer.returnNull().length
-
-    val notNullAnnotationInferredToNullableString: String? = javaCustomer.notNullAnnotation()
-    println("Type inferred to NullableString : ${notNullAnnotationInferredToNullableString?.length}")
+    val noAnnotationInferredToNullableString: String? = javaCustomer.returnNull()
+    println("No Annotation Type inferred to NullableString : ${noAnnotationInferredToNullableString?.length}")
 
     val notNullAnnotationInferredToNotNullableString: String = javaCustomer.notNullAnnotation()
     println("Type inferred to not nullable String throws IllegalStateException: ${notNullAnnotationInferredToNotNullableString.length}")
 }
-
 
 fun javaToKotlinTypesAnnotations() {
 

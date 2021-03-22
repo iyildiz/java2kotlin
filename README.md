@@ -79,15 +79,15 @@ It is a design choice made to keep language simple.
 - **Safe Casts `as?`** returns null if the cast can't be done. Non-safe type cast `as` throws ClassCastException, if the cast is unsuccessful.
 - **Examples** [Idioms](src/main/kotlin/idioms.kt)
 ### Functional Programming / Lambdas
-- Kotlin is not purely functional. It combines ides from different paradigms like OO, functional
-- **Lambdas** are a part of the language and quite cheap to use. See 
+- Kotlin is not purely functional. It combines ideas from different paradigms like OO, functional
+- **Lambdas** are a part of the language and quite cheap to use 
     - Don’t use `it` if it has different types in other lambda lines
     - Prefer explicit parameter names if `it` might be confusing
     - Wrap complex lambdas with a well named variable to make it readable
     - `Lambda`s can be assigned to a variable and passed to other methods. 
-    Even they can be nullable and called safely using `f?.invoke()`
+    - Even they can be nullable and called safely using `f?.invoke()`
     - In Java only SAM (Single abstract method) interfaces can be passed as lambdas.
-  **Member References** Can be used to access simple lambdas accessing member varibles/functions
+- **Member References** Can be used to access simple lambdas accessing member variables/functions
     - Syntax is same as Java : `Customer::name`
     - Lambdas can be assigned to variables but functions can't. Functions are clearly different from variables.
     - Function references `::function` can be assigned to variables. Internally they are converted to lambdas calling that function only.
@@ -190,10 +190,10 @@ And they hold a reference to top level class internally. Be aware of memory leak
 - **Examples** [Generics](src/main/kotlin/oop/generics.kt) 
 
 ### Conventions
-- They apply to Kotlin but if right naming used on the Java side Kotlin still can benefit from those conventions.
-- Extensions can be used to facilitate those conventions for Java classes as well.
-- Custom operators are not allowed as that can end up unreadable code.
-- Unlike Java Kotlin prefers `conventions` to `interfaces` for the following two reasons
+- They apply to Kotlin but if right naming is used on the Java side Kotlin can still benefit from those conventions
+- Extensions can be used to facilitate those conventions for Java classes as well
+- Custom operators are not allowed as that can end up unreadable code
+- Unlike Java, Kotlin prefers `conventions` to `interfaces` for the following two reasons
     - `extensions` allow you to add those conventions to classes that are not under your control
     - You can decouple utility functions from your main code and keep it clean with the help of `extensions` + conventions
 #### Operator Overloading
@@ -340,9 +340,9 @@ They look like built in construct but actually they are just library functions
 - `@Nullable` annotations in Java are visible in Kotlin as`Type?` nullable type     
 - `@NotNull` annotations in Java are are visible in Kotlin as`Type`  
 - Java classes with no (@Nullable/@NotNull) annotations are visible in Kotlin as **`Type!` called platform type**
-    - It comes from Java and appears in error messages ans is a type of `unknown nullability`
-    - `Type!` us a notation and not a syntax and can't be declared in Kotlin
-    - It is solution for Java/Kotlin mix projects as converting Java classes to `Type?` would end up too many `!!` usages
+    - It comes from Java and appears in error messages and is a type of `unknown nullability`
+    - `Type!` is a notation and not a syntax and can't be declared in Kotlin
+    - It is a solution for Java/Kotlin mix projects as converting Java classes to `Type?` would end up too many `!!` usages
     - Platform types (`Type!`) are allowed to be de-referenced without null check. 
     That means you may end up throwing `NullPointerException` 
 - Two ways to prevent NPEs coming from Java Platform types (Type!)

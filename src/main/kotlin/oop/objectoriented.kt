@@ -29,9 +29,9 @@ class Truck(reg: String, model: String) : Vehicle(reg,model) {
 }
 
 fun main() {
-    B("a")
     Car("XYZ", "Nissan")
     Truck("ABC", "Volvo")
+    B("a")
 }
 
 open class A(open val value: String) {

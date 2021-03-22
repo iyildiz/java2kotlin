@@ -10,7 +10,7 @@ fun main() {
 
 fun memberReferences() {
     val listOfCustomers = buildListOfCustomers()
-    val maxAgeCustomer = listOfCustomers.maxBy(CustomerDataClass::age)
+    val maxAgeCustomer = listOfCustomers.maxByOrNull(CustomerDataClass::age)
     println("Oldest customer: $maxAgeCustomer")
 
     val isEvenLambda: (Int) -> Boolean = { i: Int -> i % 2 == 0 } //Store lambda in a variable
@@ -85,7 +85,7 @@ private fun collections() {
     val zippedList = (1..10).zip(-1 downTo -10)
     println("zip: $zippedList")
     val listOfCustomers = buildListOfCustomers()
-    val maxItem = listOfCustomers.maxBy { it.id }
+    val maxItem = listOfCustomers.maxByOrNull { it.id }
     val firstItem: CustomerDataClass = listOfCustomers.first()
     val lastItem: CustomerDataClass = listOfCustomers.last()
     val firstItemOrNull: CustomerDataClass? = listOfCustomers.firstOrNull()
@@ -97,7 +97,7 @@ private fun collections() {
     println("even: $even")
     println("odd: $odd")
 
-    println(listOfCustomers.groupBy { it.age }.maxBy { (_, list) -> list.size })
+    println(listOfCustomers.groupBy { it.age }.maxByOrNull { (_, list) -> list.size })
     println(listOfCustomers.associate { it.name to it.age })
     println(listOfCustomers.associateBy { it.name })
 
@@ -105,7 +105,7 @@ private fun collections() {
         .flatMap { first ->
             listOfCustomers.map { second -> first to second }
         }
-        .maxBy { it.first.age - it.second.age }!!
+        .maxByOrNull { it.first.age - it.second.age }!!
     println("custMaxAge: $custMaxAge custMinAge: $custMinAge")
 
 
@@ -114,7 +114,6 @@ private fun collections() {
 
     val sumOfNumbers = addNumbersUpToWithReduce(10)
     println("addNumbersUpToWithReduce up to 10: $sumOfNumbers")
-
 }
 
 fun factorialWithFoldRight(number: Int) =

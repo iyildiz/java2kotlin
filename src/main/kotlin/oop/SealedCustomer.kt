@@ -1,8 +1,8 @@
 package oop
 
 sealed class SealedCustomer
-class PersonalCustomer (val name: String)
-class CorporateCustomer (val corporateName: String)
+class PersonalCustomer (val name: String) : SealedCustomer()
+class CorporateCustomer (val corporateName: String) : SealedCustomer()
 
 fun main() {
 

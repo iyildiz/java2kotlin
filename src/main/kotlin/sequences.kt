@@ -29,7 +29,8 @@ fun sequenceFromScratch() {
     val randomPositiveInt = generateSequence {
         Random.nextInt(10).takeIf { it > 0 }
     }
-    println("sequenceFromScratch : ${randomPositiveInt.toList()}")
+//    println("sequenceFromScratch : ${randomPositiveInt.toList()}")
+    println("sequenceFromScratch : ${randomPositiveInt.take(15).toList()}")
 
     val infiniteSeq = generateSequence(0) {
         it + 1
