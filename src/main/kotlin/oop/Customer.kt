@@ -11,6 +11,8 @@ fun main() {
         name = "Java Customer Name"
     }
     println("name:${customerJava.name}")
+    customerJava.name = "Updated Java Customer Name"
+    println("name:${customerJava.name}")
 
     val customerKotlin = Customer(12, "Kotlin Customer", "email@email123")
     println("name:${customerKotlin.name}")
