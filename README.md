@@ -163,7 +163,7 @@ And they hold a reference to top level class internally. Be aware of memory leak
 - They are special object inside a class created using `companion` keyword.
 - They are introduced to get rid of `static` functions in Java. (Top level functions also help for that)
 - Companion objects can implement interfaces which can help a lot.
-- Extensions functions can be added to `companion objects`
+- Extension functions can be added to `companion objects`
 - From Java `Companion` keyword can be used to access. Another alternative is to use `@JvmStatic` annotation in Kotlin
 - Kotlin doesn't use `static` keyword. But that functionality exist via
     - Top level 
@@ -309,7 +309,7 @@ They look like built in construct but actually they are just library functions
     - Generic type arguments are always converted to `Integer` wrapper type. 
     - Kotlin `Array<Int>` is converted to Java `Integer[]`. `IntArray` class will generate `int[]`
 - Kotlin String is converted to `java.lang.String`. It modifies the String Api
-    - Some of the confusing methods are hidden
+    - Some confusing methods are hidden
     - `replaceAll` in Java accepts regex parameters as String. Kotlin String uses `replace` with String and Regex object parameters
 - `Any` is the super type of all nun nullable types and is converted to `java.lang.Object`
 - Kotlin `Function types` are replaced with **corresponding interfaces** if they are **not inlined**
@@ -335,6 +335,7 @@ They look like built in construct but actually they are just library functions
 - There is also a **type hierarchy for nullable types**. 
     - Indeed `Any?` is the super type of `Any`
     - `Nothing?` can be expressed with `null` literal 
+- `javaClass` is Kotlin’s equivalent for Java’s `getClass()`
 - **Examples** [Type Examples](src/main/kotlin/types.kt)     
 #### Java to Kotlin types 
 - `@Nullable` annotations in Java are visible in Kotlin as`Type?` nullable type     
@@ -348,8 +349,10 @@ They look like built in construct but actually they are just library functions
 - Two ways to prevent NPEs coming from Java Platform types (Type!)
     - Annotate Java classes with `@Nullable/@NotNullable`
     - Specify types on Kotlin side explicitly
-- Specifying explicit types may throw runtime IllegalStateException sometimes but it is much clearer than a NPE
+- Specifying explicit types may throw runtime IllegalStateException sometimes, but it is much clearer than a NPE
 - Kotlin Collections are using Java collections under the hood
+    - That makes it much easier to interact with Java code
+    - Extension functions are used to add extra methods like `max`, `last`
     - `java.util.List` will be represented by **Kotlin List & MutableList** 
     - Kotlin readonly collections hide some methods not to allow you to add/remove to collections
     - Kotlin readonly collections are not immutable as you can update individual items

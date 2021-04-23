@@ -8,6 +8,7 @@ fun main() {
     javaToKotlinTypesTypeInference()
     javaToKotlinTypesAnnotations()
     nothing()
+    javaClass()
 }
 
 fun javaToKotlinTypesTypeInference() {
@@ -78,4 +79,13 @@ fun kotlinString() {
     val str = "abcdef.def.thg."
     println("string replace:${str.replace('.','*')}")
     println("Regex replace:${str.replace(".".toRegex(),"*")}")
+}
+
+fun javaClass() {
+
+    val hashSetJava = hashSetOf<String>()
+    println("Java Class: ${hashSetJava.javaClass}")
+
+    val hashSetKotlin = setOf<String>()
+    println("Java Class: ${hashSetKotlin.javaClass}")
 }
