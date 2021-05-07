@@ -318,7 +318,7 @@ They look like built in construct but actually they are just library functions
     - `(T,U) -> R` is converted to `Function2<T,U,R>`
     - `f()` is a short version of `f.invoke()` (Function0/1/2.. interfaces declare `invoke()` method)
     - nullable function types can be called using `f?.inovke()`
-- Kotlin arrays are converted to Java arrays
+- Kotlin's arrays are converted to Java arrays
     - `Array<Int>` is converted to `Integer[]` 
     - `IntArray` is converted to `int[]` 
     - Kotlin arrays also use reference check for `equals` as they are converted to Java.
@@ -336,6 +336,10 @@ They look like built in construct but actually they are just library functions
     - Indeed `Any?` is the super type of `Any`
     - `Nothing?` can be expressed with `null` literal 
 - `javaClass` is Kotlin’s equivalent for Java’s `getClass()`
+- Kotlin uses `varargs` keyword instead of Java’s `...`
+    - Java allows you pass an array directly to a vararg method 
+    - In Kotlin, you need to apply the spread operator (`*`), you can’t directly an array
+    - Kotlin allows you to mix spread operator (`*`) with other params but Java doesn't
 - **Examples** [Type Examples](src/main/kotlin/types.kt)     
 #### Java to Kotlin types 
 - `@Nullable` annotations in Java are visible in Kotlin as`Type?` nullable type     
