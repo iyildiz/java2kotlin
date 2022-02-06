@@ -215,6 +215,8 @@ And they hold a reference to top level class internally. Be aware of memory leak
 - `x in y` is converted to `y.contains(x)`
 - `start..end` is converted to `start.rangeTo(end)`
 - `for` loops operates over any `Iterable` e.g Kotlin String
+- `infix fun` can be used with methods/extension functions that have one required parameter
+  - x.to("one")  is same as => x to "one"
 - Destructuring is also done via convention
     - val (x,y) = a is converted to `val x = a.component1()` and `var y = a.component2()`
     - `data classes` generate `component` functions automatically for you using constructor order.

@@ -25,6 +25,8 @@ data class Rational(val numerator : Int, val denominator : Int) : Comparable<Rat
     }
 }
 
+infix fun Rational.customTo(other: Rational) = Pair(this,other)
+
 enum class RationalIndex{
     NUMERATOR,DENOMINATOR
 }
@@ -43,6 +45,10 @@ fun otherConventions() {
 
     for(rationalNumberPart in Rational(6,7))
         println("rationalNumberPart inside for with custom iterator: $rationalNumberPart")
+
+    val pairWithTo = Rational(1,3) to Rational(3,4)
+    val pairWithCustomTo = Rational(1,3) customTo Rational(3,4)
+    println("infix operator usage: ${pairWithTo == pairWithCustomTo}")
 }
 
 fun operatorOverloading() {
