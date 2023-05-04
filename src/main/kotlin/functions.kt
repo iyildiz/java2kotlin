@@ -12,7 +12,7 @@ fun main() {
 
 fun topLevelFunction() = 50
 
-fun inlineFunction(f:(Int, Int) -> Int) : Int {
+inline fun inlineFunction(f:(Int, Int) -> Int) : Int {
     return f(1,2)
 }
 

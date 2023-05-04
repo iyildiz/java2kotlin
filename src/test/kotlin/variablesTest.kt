@@ -43,6 +43,8 @@ class variablesTest {
             Customer(1, "name", "email")
         }
 
+        assertThat(numOfInits.get()).isEqualTo(0)
+
         lazyValue
         lazyValue
 
